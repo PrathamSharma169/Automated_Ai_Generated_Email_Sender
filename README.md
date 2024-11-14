@@ -23,8 +23,8 @@ This project is a Flask-based web application designed for customized email deli
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/PrathamSharma169/Automated_Ai_Generated_Email_Sender.git
+   cd Automated_Ai_Generated_Email_Sender
    ```
 
 2. **Install Dependencies**
@@ -41,19 +41,22 @@ This project is a Flask-based web application designed for customized email deli
 
 ## Usage
 
-1. **Start the Flask App**
+1. **Update app.py**
+    - Update the email ID with your email ID in process function of app.py
+
+2. **Start the Flask App**
    ```bash
    flask run
    ```
 
-2. **Access the Application**
+3. **Access the Application**
    - Visit `http://localhost:5000` to access the app interface.
 
-3. **Enter Prompt and Upload CSV**
+4. **Enter Prompt and Upload CSV**
    - Input your prompt with placeholders (e.g., `{name}`, `{location}`).
    - Upload a CSV file containing email data, including a column for `email`.
 
-4. **View Status**
+5. **View Status**
    - After submission, view email statuses on the status page.
    - Use `/dashboard` to view the real-time delivery status of all emails.
 
@@ -72,9 +75,7 @@ To enable real-time status updates, configure SendGrid to send event notificatio
 ├── templates
 │   ├── form.html            # Form for uploading CSV and entering prompt
 │   ├── status.html          # Displays status of each email sent
-│   └── dashboard.html       # Dashboard to view real-time email delivery statuses
-├── static
-│   └── style.css            # Custom CSS for styling
+│   └── dashboard.html       # Dashboard to view real-time email delivery statuses            
 └── README.md                # This README file
 ```
 
@@ -102,5 +103,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 - [Groq](https://groq.com/) for language model API.
 - [SendGrid](https://sendgrid.com/) for email services.
-
-<!-- Replace `yourusername` and `your-repo-name` with your actual GitHub username and repository name. This README file should provide a thorough guide for users of your email automation app! -->

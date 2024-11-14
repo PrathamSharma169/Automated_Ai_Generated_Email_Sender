@@ -8,13 +8,10 @@ import time
 
 app = Flask(__name__)
 
-# Initialize Groq client
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
-# Initialize SendGrid client
 sendgrid_client = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
 
-# In-memory store for email statuses (replace with a database for persistence)
 email_statuses = {}
 
 @app.route('/')
@@ -29,17 +26,14 @@ def process():
     data = pd.read_csv(file)
 
     for index, row in data.iterrows():
-        # Customize the prompt using only the placeholders
         custom_prompt = prompt_template
         for column_name in row.index:
             placeholder = "{" + column_name + "}"
             if placeholder in custom_prompt:
                 custom_prompt = custom_prompt.replace(placeholder, str(row[column_name]))
 
-        # Add instruction for Groq API to avoid introductory text
         custom_prompt = f"Generate only the main content message:\n{custom_prompt}"
 
-        # Generate message using Groq API
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": custom_prompt}],
             model="llama3-8b-8192",
@@ -47,10 +41,8 @@ def process():
         main_content = chat_completion.choices[0].message.content
         main_content = main_content.split("\n", 1)[-1].strip()
 
-        # Extract email ID from row
         email = row['email']
 
-        # Send email using SendGrid
         message = Mail(
             from_email="yourgmail@gmail.com", # enter your gmail id by which you want to send mail
             to_emails=email,
@@ -67,10 +59,8 @@ def process():
         except Exception as e:
             status = f"Failed (Error: {str(e)})"
 
-        # Initialize delivery status to "Pending" after email is sent
         email_statuses[email] = {"status": status, "delivery_status": "Pending"}
 
-        # Optional delay to respect rate limits
         time.sleep(1)
 
     return render_template("status.html", email_statuses=email_statuses)
@@ -84,7 +74,6 @@ def webhook():
         event_type = event.get("event")
         event_type = event.get("event")
 
-        # Update email status based on the event type
         if email in email_statuses:
             if event_type == "delivered":
                 email_statuses[email]["delivery_status"] = "Delivered"
