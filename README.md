@@ -86,9 +86,9 @@ The uploaded CSV file should contain a column named `email` for recipient email 
 
 **Example CSV:**
 ```csv
-name,email,location
-John Doe,johndoe@example.com,New York
-Jane Smith,janesmith@example.com,Los Angeles
+,Name,location,email
+0,yugal,Indore,yugal_sample@gmail.com
+1,Yash,Bhopal,Yash_sample@gmail.com
 ```
 
 ## Troubleshooting
@@ -105,4 +105,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 - [Groq](https://groq.com/) for language model API.
 - [SendGrid](https://sendgrid.com/) for email services.
 
+## Website
 ![Website Screenshot](website.png)
