@@ -1,8 +1,8 @@
 import pandas as pd
 data = {
-    'Name': ['Yugal','Raju'],
-    'location' : ['Indore','Khargon'],
-    'email' : ['yugal1107@gmail.com','yuvraj7000raju@gmail.com']
+    'Name': ['Yugal','Yash'],
+    'location' : ['Indore','Bhopal'],
+    'email' : ['yugal_sample@gmail.com','Yash_sample@gmail.com'] # these are fake id
 }
 df=pd.DataFrame(data)
 df.to_csv('sample.csv')

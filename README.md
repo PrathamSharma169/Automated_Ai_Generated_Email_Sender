@@ -30,6 +30,7 @@ This project is a Flask-based web application designed for customized email deli
 2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
+   pip install python-dotenv
    ```
 
 3. **Environment Variables**
@@ -42,7 +43,7 @@ This project is a Flask-based web application designed for customized email deli
 ## Usage
 
 1. **Update app.py**
-    - Update the email ID with your email ID in process function of app.py
+    - Update the email ID with your email ID in process function of app.py (Email ID should be same as used while making sendgrid api key)
 
 2. **Start the Flask App**
    ```bash
@@ -103,3 +104,5 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 - [Groq](https://groq.com/) for language model API.
 - [SendGrid](https://sendgrid.com/) for email services.
+
+![Website Screenshot](website.png)

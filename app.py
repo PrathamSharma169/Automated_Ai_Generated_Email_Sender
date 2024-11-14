@@ -5,6 +5,8 @@ from groq import Groq
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 import time
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
