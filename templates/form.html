@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload CSV and Prompt</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #FFE5B4, #FFE5B4);
+        margin: 0;
+        padding: 0;
+      }
+
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+
+      form {
+        max-width: 600px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+        color: #555;
+      }
+
+      textarea,
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      textarea:focus,
+      input[type="file"]:focus {
+        border-color: #4caf50;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 15px 0;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        margin-top: 30px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Enter Prompt and Upload CSV File</h2>
+    <form action="/process" method="post" enctype="multipart/form-data">
+      <label for="prompt">Enter Prompt:</label><br />
+      <textarea
+        id="prompt"
+        name="prompt"
+        rows="4"
+        cols="50"
+        placeholder="Enter prompt with placeholders like {Company Name}, {Location}..."
+      ></textarea
+      ><br /><br />
+
+      <label for="file">Upload CSV File:</label><br />
+      <input type="file" id="file" name="file" accept=".csv" /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      document.querySelector("form").addEventListener("submit", function (e) {
+        var prompt = document.getElementById("prompt").value.trim();
+        var fileInput = document.getElementById("file");
+        if (prompt === "") {
+          alert("Please enter a prompt.");
+          e.preventDefault();
+        } else if (fileInput.files.length === 0) {
+          alert("Please upload a CSV file.");
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
